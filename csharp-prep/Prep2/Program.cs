@@ -37,8 +37,6 @@ class Program
 
     if (letter != "F")
     {
-
-    
         int lastDigit = percent % 10;
 
         if (lastDigit >= 7)
