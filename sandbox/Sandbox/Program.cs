@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Sandbox World!");
+        Reference reference = new Reference("1 Nephi", "3", 7);
+        string text = ""
     }
 }
