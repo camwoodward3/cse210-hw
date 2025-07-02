@@ -1,0 +1,2 @@
+0
+Simple|Go to church|Go to Church once a week|50|False
