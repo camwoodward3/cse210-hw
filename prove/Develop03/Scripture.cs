@@ -17,25 +17,16 @@ public class Scripture
         }
     }
 
+
+
     public void HideRandomWords(int count)
     {
         Random rand = new Random();
-        List<Word> visible = _words.FindAll(w => !w.IsHidden());
-
-        for (int i = 0; i < count && visible.Count > 0; i++)
-        {
-            int index = rand.Next(visible.Count);
-            visible[index].Hide();
-            visible.RemoveAt(index);
-        }
+        List<Word> visible = _words.FindAll(w => !w.GetIsHidden());
     }
 
-    public bool AllWordsHidden()
-    {
-        return _words.TrueForAll(w => w.IsHidden());
-    }
 
-    public string GetDisplayText()
+    public string DisplayScripture()
     {
         List<string> output = new List<string>();
 
@@ -44,6 +35,10 @@ public class Scripture
             output.Add(word.GetText());
         }
 
-        return $"{_reference.GetDisplay()} {string.Join(" ", output)}";
+        return $"{_reference.DisplayReference()} {string.Join(" ", output)}";
+    }
+
+    public bool IsAllHidden() {
+        return _words.TrueForAll(w => w.GetIsHidden());
     }
 }
