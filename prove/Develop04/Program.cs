@@ -4,9 +4,8 @@ class Program
 {
     static void Main()
     {
-        bool running = true;
-
-        while (running)
+        string number = "";
+        while (number != "4")
         {
             Console.Clear();
             Console.WriteLine("Menu:");
@@ -14,27 +13,19 @@ class Program
             Console.WriteLine("2. Reflect");
             Console.WriteLine("3. Listing");
             Console.WriteLine("4. Quit");
-            Console.Write("Select an activity: ");
-            string choice = Console.ReadLine();
-
-            switch (choice)
+            Console.WriteLine("Select an activity: ");
+            number = Console.ReadLine();
+            if (number == "1")
             {
-                case "1":
-                    new Breathing(30).Display(); break;
-                case "2":
-                    new Reflect(30).Display(); break;
-                case "3":
-                    new Listing(30).Display(); break;
-                case "4":
-                    running = false; break;
-                default:
-                    Console.WriteLine("Invalid choice."); break;
+                new Breathing(30).Display();
             }
-
-            if (running)
+            else if (number == "2")
             {
-                Console.WriteLine("\nPress Enter to return to menu...");
-                Console.ReadLine();
+                new Reflect(30).Display(); 
+            }
+            else if (number == "3")
+            {
+                new Listing(30).Display();
             }
         }
         Console.WriteLine();

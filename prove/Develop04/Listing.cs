@@ -1,7 +1,10 @@
 using System;
+using System.Runtime.CompilerServices;
 
 public class Listing : Activity
 {
+
+    static Random rand = new Random();
     private List<string> _prompts = new List<string>
     {
         "Who are people that you appreciate?",
@@ -12,17 +15,19 @@ public class Listing : Activity
     };
     List<string> _responses = new List<string>();
 
-
     public Listing(int duration)
-        : base("Listing", duration, "This activity will help you reflect on good things in your life by having you list as many things as you can in a certain area.")
+         : base("Listing", duration, "This activity will help you reflect on good things in your life by having you list as many things as you can in a certain area.")
     {
 
     }
+
     private string GetRandomPrompt()
     {
-        Random rand = new Random();
-        return _prompts[rand.Next(_prompts.Count)];
+        int number = rand.Next(0, _prompts.Count);
+        string RandomPrompt = _prompts[number];
+        return RandomPrompt;
     }
+
     public void ResponseControl()
     {
         DateTime endTime = DateTime.Now.AddSeconds(_duration);
@@ -42,21 +47,23 @@ public class Listing : Activity
                 _responses.Add(input);
             }
         }
+
     }
+
     public void DisplayResponseControl()
     {
         Console.WriteLine($"You listed {_responses.Count} items!");
-
+    
     }
+
     public override void Display()
     {
-
         StartMessage();
-
 
         ResponseControl();
         DisplayResponseControl();
 
         EndMessage();
+        
     }
-}
+}   

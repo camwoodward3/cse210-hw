@@ -13,60 +13,59 @@ public class Activity
         _description = description;
     }
 
-
     public void StartMessage()
     {
         Console.Clear();
         Console.WriteLine(_description);
         AskForDuration();
         Console.Clear();
-        Console.WriteLine($"Starting: {_name}!");
+        Console.WriteLine($"Starting: {_name}");
         Console.WriteLine("Prepare to begin...");
-        Spinner(3);
     }
 
     public void EndMessage()
     {
         Console.WriteLine();
-        Console.WriteLine("Well Done!!");
+        Console.WriteLine("Well Done!");
         Spinner(3);
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name} Activity.");
         Spinner(3);
+        Console.WriteLine("\nPlease Enter to return to menu...");
+        Console.ReadLine();
     }
 
     public void AskForDuration()
-{
-    Console.Write("\nHow long, in seconds, would you like the session? ");
-    string input = Console.ReadLine();
-
-    if (int.TryParse(input, out int seconds) && seconds > 0)
     {
-        _duration = seconds;
+        Console.WriteLine("How long would like this session to be in seconds? ");
+        string input = Console.ReadLine();
+
+        if (int.TryParse(input, out int seconds) && seconds > 0)
+        {
+            _duration = seconds;
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Using default of 30 seconds.");
+            _duration = 30;
+        }
     }
-    else
+
+    public void Spinner(int seconds)
     {
-        Console.WriteLine("Invalid input. Using default of 30 seconds.");
-        _duration = 30;
-    }
-}
+        string[] spinner = { "|", "/", "-", "\\" };
+        DateTime stopTime = DateTime.Now.AddSeconds(seconds);
+        int i = 0;
 
-
-public void Spinner(int seconds)
-{
-    string[] spinner = { "|", "/", "-", "\\" };
-    DateTime end = DateTime.Now.AddSeconds(seconds);
-    int i = 0;
-
-    while (DateTime.Now < end)
-    {
-        Console.Write(spinner[i % spinner.Length]);
-        Thread.Sleep(150);
+        while (DateTime.Now < stopTime)
+        {
+            Console.Write(spinner[i % spinner.Length]);
+            Thread.Sleep(150);
+            Console.Write("\b");
+            i++;
+        }
+        Console.Write(" ");
         Console.Write("\b");
-        i++;
     }
-    Console.Write(" ");
-    Console.Write("\b");
-}
 
     public void CountDown(int seconds)
     {
@@ -77,13 +76,12 @@ public void Spinner(int seconds)
             Console.Write("\b\b");
         }
     }
+
     public virtual void Display()
     {
         StartMessage();
-        // To be overridden
         EndMessage();
     }
-
 }
 
 
