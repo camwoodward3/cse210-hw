@@ -1,5 +1,5 @@
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Reflection.Metadata;
 
 public abstract class Goals
 {
@@ -7,6 +7,7 @@ public abstract class Goals
     protected string _description;
     protected int _score;
     protected bool _isComplete;
+
     public Goals(string name, string description, int score, bool isComplete)
     {
         _name = name;
@@ -20,8 +21,25 @@ public abstract class Goals
 
     public abstract string List();
 
-    public bool IsComplete() => _isComplete;
-    public string GetName() => _name;
-    public string GetDescription() => _description;
-    public int GetScore() => _score;
+    public bool IsComplete()
+    {
+        return true;
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public int GetScore()
+    {
+        return _score;
+    }
+
 }
+

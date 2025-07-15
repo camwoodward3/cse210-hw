@@ -2,11 +2,10 @@ using System;
 
 public class Simple : Goals
 {
-
     public Simple(string name, string description, int score, bool isComplete)
         : base(name, description, score, isComplete)
     {
-        
+
     }
 
     public override string SaveToFile()
@@ -18,13 +17,14 @@ public class Simple : Goals
     {
         if (!_isComplete)
         {
-            _isComplete = true; 
+            _isComplete = true;
         }
-
     }
+
     public override string List()
     {
         string status = _isComplete ? "[X]" : "[ ]";
         return $"{status} {_name} - {_description} ({_score} pts)";
     }
+    
 }
