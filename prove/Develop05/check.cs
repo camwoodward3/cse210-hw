@@ -32,5 +32,17 @@ public class Check : Goals
         string status = _isComplete ? "[X]" : "[ ]";
         return $"{status} {_name} - {_description} ({_timesCompleted}/{_targetCount} times, {_score})";
 
-    }  
+    }
+
+    public override int GetScore()
+    {
+        if (_timesCompleted == _targetCount)
+        {
+            return _score + _bonus;
+        }
+        else
+        {
+            return _score;
+        }
+    }
 }

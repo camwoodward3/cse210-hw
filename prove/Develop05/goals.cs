@@ -36,7 +36,7 @@ public abstract class Goals
         return _description;
     }
 
-    public int GetScore()
+    public virtual int GetScore()
     {
         return _score;
     }
