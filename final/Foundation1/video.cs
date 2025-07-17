@@ -1,28 +1,35 @@
 using System;
+using System.Runtime.CompilerServices;
 
 public class Video
 {
-    private string _title;
-    private string _author;
-    private int _seconds;
+    public string _title;
+    public string _author;
+    public int _length;
+    private List<Comments> _comments;
 
-    public Video(string title, string author, int seconds)
+    public Video(string title, string author, int length, List<Comments> comments)
     {
         _title = title;
         _author = author;
-        _seconds = seconds;
+        _length = length;
+        _comments = comments;
     }
 
-    public void AddComment()
-    {
-        
-    }
-    public void GetCommentCount()
+    public void DisplayComments()
     {
 
+        foreach (Comments comment in _comments)
+        {
+            Console.WriteLine($"{comment.getName()}: {comment.getText()}");
+        }
     }
-    public void Display()
+    public int GetCommentCount()
     {
-        
+        return _comments.Count();
+    }
+    public void DisplayVideoInfo()
+    {
+        Console.WriteLine($"{_title} by {_author}, {_length} minutes.");
     }
 }

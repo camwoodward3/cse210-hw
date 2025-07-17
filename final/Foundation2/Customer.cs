@@ -16,13 +16,13 @@ public class Customer
         return _name;
     }
 
-    public Address get_address()
+    public string get_address()
     {
-        return _address;
+        return _address.Get_fullAdd();
     }
 
     public bool InUSA()
     {
-        return true;
+        return _address.InUSA();
     }
 }

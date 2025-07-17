@@ -20,13 +20,13 @@ public class Product
         return _price * _quantity;
     }
 
-    private string get_name()
+    public string get_name()
     {
         return _name;
     }
 
-    private string get_productId()
+    public string get_fullProduct()
     {
-        return _product_id;
+        return $"{_name} ({_product_id}) - ${_price}, {_quantity}";
     }
 }
