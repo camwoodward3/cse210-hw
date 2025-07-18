@@ -9,6 +9,7 @@ class Program
         Product product2 = new Product("Wii U", "WUP-001", 300, 1);
         Product product3 = new Product("Switch", "HAC-001", 300, 1);
         Product product4 = new Product("Switch 2", "BEE-001", 450, 1);
+        
 
 
         Address address1 = new Address("8423 Hollow Drive", "Aurora", "CO", "United States");

@@ -4,15 +4,15 @@ public class Outdoor : Event
 {
     private string _weather;
 
-    public Outdoor(string title, string description, DateTime date, string time, Address address, string weather)
-        : base(title, description, date, time, address)
+    public Outdoor(string title, string description, DateTime startTime, DateTime endTime, Address address, string weather)
+        : base(title, description, startTime, endTime, address)
     {
         _weather = weather;
     }
 
-    public string GetFullDescription()
+    public override void GetFullDescription()
     {
-        return $"{_title}, {_description}, {_date}, {_time}, {_address}, {_weather}";
+        Console.WriteLine($"{_title}, {_description}, {_startTime}, {_endTime}, {get_address()}, {_weather}");
     }
 }
 

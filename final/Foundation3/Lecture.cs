@@ -5,15 +5,15 @@ public class Lecture : Event
     private string _speaker;
     private int _canfit;
 
-    public Lecture(string title, string description, DateTime date, string time, Address address, string speaker, int canfit)
-        : base(title, description, date, time, address)
+    public Lecture(string title, string description, DateTime startTime, DateTime endTime, Address address, string speaker, int canfit)
+        : base(title, description, startTime, endTime, address)
     {
         _speaker = speaker;
         _canfit = canfit;
     }
 
-    public string GetFullDescription()
+    public override void GetFullDescription()
     {
-        return $"{_title}, {_description}, {_date}, {_time}, {_address}, {_speaker}, {_canfit}";
+        Console.WriteLine($"{_title}, {_description}, {_startTime}, {_endTime}, {get_address()}, {_speaker}, {_canfit}");
     }
 }
